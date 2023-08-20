@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 import util.generic as utl
+from forms.ventana_contactos import Interfaz
 
 class App:
     
@@ -10,7 +11,9 @@ class App:
         password = self.password.get()        
         if(usu == "root" and password == "1234") :
             self.ventana.destroy()
-            messagebox.showinfo(message="sesion iniciada con exito ",title="Mensaje")
+            root = tk.Tk()
+            Interfaz(root)
+            root.mainloop()
            
            
         else:
