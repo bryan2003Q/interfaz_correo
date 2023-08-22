@@ -1,2 +1,2 @@
-from forms.inicio import MasterPanel
-MasterPanel()
+from archivos.forms.inicio import MasterPanel
+MasterPanel() 

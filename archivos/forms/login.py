@@ -1,9 +1,8 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
-import util.generic as utl
-from forms.ventana_contactos import Interfaz
-
+import archivos.util.generic as utl
+from archivos.ventanas.PrincipalCorreos import Principal
 class App:
     
     def verificar(self):
@@ -11,11 +10,12 @@ class App:
         password = self.password.get()        
         if(usu == "root" and password == "1234") :
             self.ventana.destroy()
+            #subprocess.run(["python", "ventanas/PrincipalCorreos.py"])
             root = tk.Tk()
-            Interfaz(root)
+            Principal(root)
             root.mainloop()
            
-           
+            
         else:
             messagebox.showerror(message="La contraseña no es correcta",title="Mensaje")    
 
@@ -26,8 +26,13 @@ class App:
         self.ventana.config(bg='#fcfcfc')
         self.ventana.resizable(width=0, height=0)    
         utl.centrar_ventana(self.ventana,800,500)
+
+
+        # Establecer el icono de la ventana
+        icon_path = "./archivos/imagenes/icono.ico"  
+        self.ventana.iconbitmap(icon_path)
         
-        logo =utl.leer_imagen("./imagenes/logo.png", (200, 200))
+        logo =utl.leer_imagen("./archivos/imagenes/logo.png", (200, 200))
         # frame_logo
         frame_logo = tk.Frame(self.ventana, bd=0, width=300, relief=tk.SOLID, padx=10, pady=10,bg='#3a7ff6')
         frame_logo.pack(side="left",expand=tk.YES,fill=tk.BOTH)
